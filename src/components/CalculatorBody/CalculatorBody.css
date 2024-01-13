@@ -1,0 +1,8 @@
+.calculatorbody {
+    height: 75vh;
+    width: 75vw;
+    border-radius: 3vw;
+    display: flex;
+    justify-content: center;
+    background-color: peru;
+}
