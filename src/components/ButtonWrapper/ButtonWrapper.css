@@ -1,11 +1,11 @@
 .buttonwrapper {
-    width: 90%;
-    height: 80%;
-    margin: 3%;
+    width: 95%;
+    height: calc(100% - 110px);
+    margin: 10px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-gap: 10px;
-    background-color: antiquewhite;
+    background-color: inherit;
     border-radius: 3vw;
 }
