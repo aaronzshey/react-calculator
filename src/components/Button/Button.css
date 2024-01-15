@@ -1,11 +1,16 @@
 button {
     border: none;
-    background-image: linear-gradient(145deg, mistyrose, thistle, thistle);
+    background-image: linear-gradient(
+        145deg,
+        var(--background-one),
+        var(--background-two),
+        var(--background-two)
+    );
     transition: 1s;
     background-size: 200% 200%;
     box-shadow:
-        2px 2px 20px #b8a2b8,
-        -2px -2px 20px #f8dcf8;
+        1px 1px 10px var(--shadow-up),
+        -1px -1px 10px var(--shadow-down);
     font-weight: bold;
     transition: 0.5s;
     border-radius: 25px;
@@ -16,13 +21,15 @@ button:hover {
     background-position: 100% 100%;
     transition: 0.5s;
     box-shadow: none;
+    outline: var(--outline-color);
 }
 
 .equals {
     grid-column: 3 / 5;
-    background-image: linear-gradient(145deg, lavender, thistle, thistle);
-}
-
-.equals:hover {
-    background-color: MediumVioletRed;
+    background-image: linear-gradient(
+        145deg,
+        var(--background-three),
+        var(--background-two),
+        var(--background-two)
+    );
 }

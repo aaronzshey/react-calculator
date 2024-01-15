@@ -6,6 +6,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: thistle;
+    background-color: var(--background-two);
     outline: 0.5px solid white;
 }

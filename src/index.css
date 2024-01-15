@@ -1,14 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Tektur:wght@400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     font-family: "Tektur", sans-serif;
+
+    /* LIGHT THEME VARIABLES */
+
+    /* DARK THEME VARIABLES */
 }
 
 body {
+    transition: 0.5s;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(145deg, mistyrose, thistle, thistle);
+    background-image: linear-gradient(
+        145deg,
+        var(--background-one),
+        var(--background-two)
+    );
+}
+
+body.light {
+    --background-one: mistyrose;
+    --background-two: thistle;
+    --background-three: lavender;
+    --shadow-up: #b8a2b8;
+    --shadow-down: #f8dcf8;
+}
+
+body.dark {
+    --background-one: #462b46;
+    --background-two: black;
+    --background-three: darkslategray;
+    --shadow-up: black;
+    --shadow-down: black;
+    /*
+    --shadow-up: #352035;
+    --shadow-down: #583658;
+    */
+}
+
+body.oled {
+    --background-one: black;
+    --background-two: black;
+    --background-three: black;
+    --shadow-up: black;
+    --shadow-down: black;
+    --outline-color: 2px solid white;
 }
