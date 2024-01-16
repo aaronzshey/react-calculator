@@ -4,6 +4,12 @@ import CalculatorBody from "./components/CalculatorBody/CalculatorBody.jsx";
 import Screen from "./components/Screen/Screen.jsx";
 import ButtonWrapper from "./components/ButtonWrapper/ButtonWrapper.jsx";
 import Button from "./components/Button/Button.jsx";
+import ThemeToggleWrapper from "./components/ThemeToggleWrapper/ThemeToggleWrapper.jsx";
+import ThemeToggleButton from "./components/ThemeToggleButton/ThemeToggleButton.jsx";
+
+import { PiSun } from "react-icons/pi";
+import { PiMoon } from "react-icons/pi";
+import { PiMoonStars } from "react-icons/pi";
 
 //TODO: ADD "warning" toast when an unsupported action is performed
 
@@ -15,11 +21,30 @@ const btnValues = [
   [0, ".", "="],
 ];
 
+const themeValues = [
+  {
+    theme: "themeToggleButton light",
+    icon: <PiSun />,
+  },
+  {
+    theme: "themeToggleButton dark",
+    icon: <PiMoon />,
+  },
+  {
+    theme: "themeToggleButton oled",
+    icon: <PiMoonStars />,
+  },
+];
+
 const App = () => {
   let [calc, setCalc] = useState({
     sign: "",
     num: 0,
     result: 0,
+  });
+
+  let [theme, setTheme] = useState({
+    theme: "light",
   });
   //setCalc is a setter function for the object calc, which becomes the object passed to useState()
   //thus, we can use calc.sign, calc.num, etc. to access the values of the object
@@ -124,6 +149,40 @@ const App = () => {
       res: calc.res ? calc.res / 100 : 0,
     });
   };
+
+  /*
+  the icons I'm using render like this:
+  <svg>
+    <path>
+    </path>
+  </svg>
+
+  When you click on a button, sometimes the click is captured by the svg, and sometimes it's captured by the path.
+  Thus, I have to identify the click receptor and act accordingly to find the theme className of the parent button
+  */
+  const themeToggleHandler = (element) => {
+    element.preventDefault();
+    const el = element.target;
+    const clickReceived = el.nodeName;
+    const parent = el.parentElement;
+    //console.log(el);
+    //console.log(clickReceived);
+    // console.log(parent);
+
+    const themeMode =
+      clickReceived === "svg"
+        ? el.parentElement.className
+        : clickReceived === "path"
+          ? parent.parentElement.className
+          : clickReceived === "button"
+            ? el.className
+            : "Error";
+
+    document.body.className = themeMode.split(" ")[1];
+
+    //TODO: replace with warning toast
+  };
+
   return (
     <>
       <CalculatorBody>
@@ -155,6 +214,20 @@ const App = () => {
           })}
         </ButtonWrapper>
       </CalculatorBody>
+
+      <ThemeToggleWrapper>
+        {themeValues.map((info, i) => {
+          return (
+            <ThemeToggleButton
+              key={i}
+              className={info.theme}
+              onClick={themeToggleHandler}
+            >
+              {info.icon}
+            </ThemeToggleButton>
+          );
+        })}
+      </ThemeToggleWrapper>
     </>
   );
 };

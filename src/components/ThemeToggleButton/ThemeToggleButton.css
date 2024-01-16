@@ -1,0 +1,11 @@
+button.themeToggleButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 3px;
+    transition: 0.5s;
+}
